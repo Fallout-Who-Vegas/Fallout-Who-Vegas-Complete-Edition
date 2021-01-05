@@ -1,0 +1,53 @@
+name: Build selene
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+jobs:
+  build_mod:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build (All features)
+      run: |
+        zip -rj Fallout-Who-Vegas-Complete-Edition.zip .*
+    - name: Upload mod
+      uses: actions/upload-artifact@v1
+      with:
+        name: mod_release
+        path: ./target/release/
+  release:
+    runs-on: ubuntu-latest
+    needs: ['build_mod']
+    if: contains(github.event.head_commit.message, '[release]')
+    steps:
+    - uses: actions/checkout@v1
+    - name: Get changelog
+      run: |
+        CHANGELOG_ENTRY=`grep --color=never -m 1 -Po '## \K(\[[0-9\.]+\].+)' CHANGELOG.md`
+        DESCRIPTION=`bash ./misc/extract-changelog.sh $CHANGELOG_ENTRY`
+        echo "CHANGELOG_ENTRY=$CHANGELOG_ENTRY" >> $GITHUB_ENV
+        echo "CHANGELOG_DESCRIPTION<<EOF" >> $GITHUB_ENV
+        echo "$DESCRIPTION" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: ${{ env.CHANGELOG_ENTRY }}
+        body: ${{ env.CHANGELOG_DESCRIPTION }}
+    - name: Upload Windows build
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./selene-windows.zip
+        asset_name: selene-${{ env.VERSION }}-windows.zip
+        asset_content_type: application/zip
