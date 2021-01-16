@@ -1,9 +1,6 @@
 ﻿<fomod> 
 	<Name>Fallout Who Vegas - Complete Edition</Name> 
 	<Author>The Foundry, Various</Author> 
-	<Version>1.0.5</Version> 
-	<Description>An all in 1 installer for Fallout Who Vegas's core mod and various addons created by the community.</Description> 
-	<Groups>
-		<element>Gameplay Effects and Changes</element>
-	</Groups> 
+	<Version>1.1.0</Version> 
+	<Description>An all in one installer for Fallout Who Vegas and community patches.</Description> 
 </fomod> 
