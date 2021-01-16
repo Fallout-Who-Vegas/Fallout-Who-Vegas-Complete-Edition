@@ -1,0 +1,34 @@
+name: Build mod
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[release]')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build project
+        run: |
+          zip -r Fallout-Who-Vegas-Complete-Edition . -x "README.md" ".github/*"
+      - name: Create Release Folder
+        run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+      - name: Switch to Release Folder
+        run: |
+          cd release
+          ls -la
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: keithweaver
+          WITH_V: true
+          INITIAL_VERSION: 1.0.5
