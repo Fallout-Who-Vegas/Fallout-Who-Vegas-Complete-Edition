@@ -2,11 +2,25 @@
 ## Maintained by the community!
 
 ### Install Instructions
-**This installer requires you to use Mod Organizer 2 (MO2) to install the mod.**
+**This installer requires you to use [Mod Organizer 2 (MO2)](https://github.com/Modorganizer2/modorganizer/releases) to install the mod.**
 
-(This is assuming you already have NVSE and the 4GB patch for Fallout: New Vegas)
+(This is assuming you have already installed [NVSE](https://www.nexusmods.com/newvegas/mods/67883) and the [4GB patch](https://www.nexusmods.com/newvegas/mods/62552?tab=description) for Fallout: New Vegas)
 1. Download the [Latest Release](https://github.com/Fallout-Who-Vegas/Fallout-Who-Vegas-Complete-Edition/releases) of the Complete edition 
 2. Open via Mod Organizer 2
-3. Pick and Choose what elements you would like to use in the Mod Manager Install Window
+3. Pick and choose which elements you would like to use in the Mod Manager install Window
 4. Click "Install"
 5. Play!
+
+### FAQ
+
+* **Do I need to install the mod from the nexus to use this**? 
+No. The Complete Edition includes the entire base mod from the nexus (redistributed with permission). You should not install it at the same time as the complete edition.
+
+* **Can I install this through Vortex?**
+We recommend against this as Vortex has has more limited support for FOMOD installers. Our official recommendation is to use Mod Organizer 2 and we do not offer support for installation issues with Vortex.
+
+* **Does this download include support mods which are unrelated to Fallout: Who Vegas, such as the JIP LN NVSE Plugin?**
+No, the complete edition only includes Fallout Who Vegas and its addons. We do not redistribute other authors' work without permission. If you install an addon which has a dependency on another mod you will have to download and install it separately.
+
+* **Is the mod compatible with xNVSE?**
+Yes, but it is strongly recommend that if you are using xNVSE you download and install [Bungles compatibility addon](https://github.com/Bunglepaws/fwv-bungles) in addition to the complete edition, as this fixes some compatibility issues with xNVSE.
