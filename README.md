@@ -23,4 +23,4 @@ We recommend against this as Vortex has has more limited support for FOMOD insta
 No, the complete edition only includes Fallout Who Vegas and its addons. We do not redistribute other authors' work without permission. If you install an addon which has a dependency on another mod you will have to download and install it separately.
 
 * **Is the mod compatible with xNVSE?**
-Yes, but it is strongly recommend that if you are using xNVSE you download and install [Bungles compatibility addon](https://github.com/Bunglepaws/fwv-bungles) in addition to the complete edition, as this fixes some compatibility issues with xNVSE.
+Yes, but you must install the xNVSE patch when prompted during the install. This patch also requires [JIP LN NVSE Plugin](https://www.nexusmods.com/newvegas/mods/58277) which you will have to install separately.
